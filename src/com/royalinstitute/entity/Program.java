@@ -1,5 +1,6 @@
 package com.royalinstitute.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -12,7 +13,7 @@ public class Program implements SuperEntity {
     private String program;
     private String duration;
     private double fee;
-    @OneToMany(mappedBy = "program")
+    @OneToMany(mappedBy = "program", cascade = CascadeType.ALL)
     private List<RegistrationDetail> registrationDetailList;
 
     public Program() {

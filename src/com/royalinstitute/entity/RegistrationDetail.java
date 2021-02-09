@@ -19,6 +19,10 @@ public class RegistrationDetail implements SuperEntity {
     public RegistrationDetail() {
     }
 
+    public RegistrationDetail(CompositeKey pk) {
+        this.pk = pk;
+    }
+
     public RegistrationDetail(CompositeKey pk, Registration registration, Program program) {
         this.pk = pk;
         this.registration = registration;

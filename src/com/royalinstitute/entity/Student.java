@@ -35,15 +35,31 @@ public class Student implements SuperEntity {
         return sid;
     }
 
+    public void setSid(String sid) {
+        this.sid = sid;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public List<Registration> getRegistrationList() {
         return registrationList;
+    }
+
+    public void setRegistrationList(List<Registration> registrationList) {
+        this.registrationList = registrationList;
     }
 }

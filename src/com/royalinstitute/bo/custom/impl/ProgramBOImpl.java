@@ -102,25 +102,6 @@ public class ProgramBOImpl implements ProgramBO {
     }
 
     @Override
-    public ProgramDTO search(String id) {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        programDAO.setSession(session);
-        session.getTransaction().begin();
-
-        ProgramDTO program = null;
-        try {
-            Program p = programDAO.search(id);
-            program = new ProgramDTO(p.getPid(), p.getProgram(), p.getDuration(), p.getFee());
-            session.getTransaction().commit();
-        } catch (Throwable t) {
-            session.getTransaction().rollback();
-        } finally {
-            session.close();
-        }
-        return program;
-    }
-
-    @Override
     public ProgramDTO findProgram(String value) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         programDAO.setSession(session);

@@ -10,7 +10,7 @@ public class Registration implements SuperEntity {
     @ManyToOne()
     private Student student;
     private String date;
-    @OneToMany(mappedBy = "registration")
+    @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
     private List<RegistrationDetail> registrationDetailList;
 
     public Registration() {

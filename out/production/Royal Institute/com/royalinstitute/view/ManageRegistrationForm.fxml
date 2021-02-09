@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -19,7 +20,7 @@
             <Font name="Ubuntu" size="22.0" />
          </font>
       </Label>
-      <TableView fx:id="tblProgram" focusTraversable="false" layoutX="354.0" layoutY="107.0" prefHeight="165.0" prefWidth="532.0">
+      <TableView fx:id="tblProgram" focusTraversable="false" layoutX="354.0" layoutY="107.0" onMouseClicked="#tblProgramOnMouseClicked" prefHeight="165.0" prefWidth="532.0">
          <columns>
             <TableColumn fx:id="clmID" prefWidth="81.0" text="ID" />
             <TableColumn fx:id="clmProgram" prefWidth="286.0" text="Program" />
@@ -30,7 +31,7 @@
             <DropShadow />
          </effect>
       </TableView>
-      <JFXTextField fx:id="txtId" editable="false" labelFloat="true" layoutX="29.0" layoutY="107.0" prefHeight="26.0" prefWidth="133.0" promptText="ID">
+      <JFXTextField fx:id="txtId" editable="false" focusTraversable="false" labelFloat="true" layoutX="29.0" layoutY="107.0" prefHeight="26.0" prefWidth="133.0" promptText="ID">
          <font>
             <Font size="15.0" />
          </font>
@@ -45,11 +46,11 @@
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXComboBox fx:id="cmbId" layoutX="205.0" layoutY="110.0" prefHeight="26.0" prefWidth="101.0" promptText="Select" />
+      <JFXComboBox fx:id="cmbId" editable="true" layoutX="205.0" layoutY="110.0" onAction="#cmbIdOnAction" prefHeight="26.0" prefWidth="101.0" promptText="Select" visibleRowCount="5" />
       <Line endX="784.0" layoutX="114.0" layoutY="336.0" startX="-100.0" />
-      <TableView fx:id="tblCart" layoutX="43.0" layoutY="356.0" prefHeight="131.0" prefWidth="133.0">
+      <TableView fx:id="tblCart" layoutX="43.0" layoutY="356.0" onMouseClicked="#tblCartOnMouseClicked" prefHeight="131.0" prefWidth="133.0">
         <columns>
-          <TableColumn fx:id="clmSid" prefWidth="132.0" text="ID" />
+          <TableColumn fx:id="clmPid" prefWidth="132.0" text="ID" />
         </columns>
          <effect>
             <DropShadow />
@@ -84,5 +85,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="546.0" layoutY="289.0" onAction="#btnAddOnAction" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: black; -fx-background-radius: 30; -fx-border-radius: 30;" text="Add" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="txtRegId" layoutX="120.0" layoutY="24.0" prefHeight="26.0" prefWidth="72.0" style="-fx-text-fill: red;" />
+      <TextField fx:id="txtDate" layoutX="584.0" layoutY="23.0" prefHeight="26.0" prefWidth="118.0" style="-fx-text-fill: red;" />
+      <TextField fx:id="txtTime" layoutX="729.0" layoutY="23.0" prefHeight="26.0" prefWidth="118.0" style="-fx-text-fill: red;" />
    </children>
 </AnchorPane>

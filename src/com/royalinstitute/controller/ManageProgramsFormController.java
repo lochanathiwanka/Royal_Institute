@@ -96,10 +96,9 @@ public class ManageProgramsFormController extends StageList {
 
     public void txtFindOnKeyReleased(KeyEvent keyEvent) {
         try {
-            ProgramDTO program = programBO.findProgram(txtFind.getText());
-            System.out.println(program.getProgram());
+            List<ProgramDTO> programList = programBO.findProgram(txtFind.getText());
             ObservableList<ProgramDTO> list = FXCollections.observableArrayList();
-            list.add(program);
+            list.addAll(programList);
             tblProgram.setItems(list);
             setTblProgramCellValue();
             generateId();

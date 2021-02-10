@@ -10,5 +10,5 @@ import java.util.List;
 public interface RegistrationBO extends SuperBO {
     void makeRegistration(StudentDTO student, RegistrationDTO registrationDTO) throws Exception;
 
-    String getLastId();
+    String getLastId() throws Exception;
 }

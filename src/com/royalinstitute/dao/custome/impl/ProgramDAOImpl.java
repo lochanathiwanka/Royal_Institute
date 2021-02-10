@@ -7,6 +7,8 @@ import com.royalinstitute.util.FactoryConfiguration;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
+import java.util.List;
+
 public class ProgramDAOImpl extends CrudDAOImpl <Program, String> implements ProgramDAO {
     @Override
     public String getLastId() throws Exception {
@@ -15,10 +17,10 @@ public class ProgramDAOImpl extends CrudDAOImpl <Program, String> implements Pro
     }
 
     @Override
-    public Program findProgram(String value) throws Exception {
+    public List<Program> findProgram(String value) throws Exception {
         Query query = session.createQuery("FROM Program WHERE pid LIKE ?1 OR program LIKE ?2");
         query.setParameter(1, "%"+value+"%");
         query.setParameter(2, "%"+value+"%");
-        return (Program) query.uniqueResult();
+        return query.list();
     }
 }

@@ -67,13 +67,14 @@ public class RegistrationBOImpl implements RegistrationBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
     }
 
     @Override
-    public String getLastId() {
+    public String getLastId() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         registrationDAO.setSession(session);
         session.getTransaction().begin();
@@ -84,6 +85,7 @@ public class RegistrationBOImpl implements RegistrationBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }

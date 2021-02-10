@@ -196,7 +196,6 @@ public class ManageRegistrationFormController extends StageList {
             btnClear.setDisable(true);
             btnRegister.setDisable(true);
         } catch (Exception e) {
-            e.printStackTrace();
             TrayNotification notification = new TrayNotification();
             notification.setNotificationType(NotificationType.ERROR);
             notification.setTitle("Registration");

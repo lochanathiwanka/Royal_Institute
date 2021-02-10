@@ -29,6 +29,7 @@ public class ProgramBOImpl implements ProgramBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
@@ -46,13 +47,14 @@ public class ProgramBOImpl implements ProgramBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
     }
 
     @Override
-    public String getLastId() {
+    public String getLastId() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         programDAO.setSession(session);
         session.getTransaction().begin();
@@ -63,6 +65,7 @@ public class ProgramBOImpl implements ProgramBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
@@ -70,7 +73,7 @@ public class ProgramBOImpl implements ProgramBO {
     }
 
     @Override
-    public void update(ProgramDTO program) {
+    public void update(ProgramDTO program) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         programDAO.setSession(session);
         session.getTransaction().begin();
@@ -80,13 +83,14 @@ public class ProgramBOImpl implements ProgramBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(String id) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         programDAO.setSession(session);
         session.getTransaction().begin();
@@ -96,27 +100,31 @@ public class ProgramBOImpl implements ProgramBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
     }
 
     @Override
-    public ProgramDTO findProgram(String value) throws Exception {
+    public List<ProgramDTO> findProgram(String value) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         programDAO.setSession(session);
         session.getTransaction().begin();
 
-        ProgramDTO program = null;
+        List<ProgramDTO> list = new ArrayList<>();
         try {
-            Program p = programDAO.findProgram(value);
-            program = new ProgramDTO(p.getPid(), p.getProgram(), p.getDuration(), p.getFee());
+            List<Program> programList = programDAO.findProgram(value);
+            for (Program p : programList) {
+                list.add(new ProgramDTO(p.getPid(), p.getProgram(), p.getDuration(), p.getFee()));
+            }
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
-        return program;
+        return list;
     }
 }

@@ -4,7 +4,9 @@ import com.royalinstitute.bo.custom.StudentBO;
 import com.royalinstitute.dao.DAOFactory;
 import com.royalinstitute.dao.custome.ProgramDAO;
 import com.royalinstitute.dao.custome.StudentDAO;
+import com.royalinstitute.dto.ProgramDTO;
 import com.royalinstitute.dto.StudentDTO;
+import com.royalinstitute.entity.Program;
 import com.royalinstitute.entity.Student;
 import com.royalinstitute.util.FactoryConfiguration;
 import org.hibernate.Session;
@@ -27,6 +29,7 @@ public class StudentBOImpl implements StudentBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
@@ -48,6 +51,7 @@ public class StudentBOImpl implements StudentBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
@@ -55,7 +59,7 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public StudentDTO search(String id) {
+    public StudentDTO search(String id) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         studentDAO.setSession(session);
         session.getTransaction().begin();
@@ -67,9 +71,66 @@ public class StudentBOImpl implements StudentBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
         return studentDTO;
+    }
+
+    @Override
+    public void update(StudentDTO student) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        studentDAO.setSession(session);
+        session.getTransaction().begin();
+
+        try {
+            studentDAO.update(new Student(student.getSid(), student.getName(), student.getAddress()));
+            session.getTransaction().commit();
+        } catch (Throwable t) {
+            session.getTransaction().rollback();
+            throw t;
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public void delete(String id) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        studentDAO.setSession(session);
+        session.getTransaction().begin();
+
+        try {
+            studentDAO.delete(id);
+            session.getTransaction().commit();
+        } catch (Throwable t) {
+            session.getTransaction().rollback();
+            throw t;
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public List<StudentDTO> findStudents(String value) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        studentDAO.setSession(session);
+        session.getTransaction().begin();
+
+        List<StudentDTO> list = new ArrayList<>();
+        try {
+            List<Student> studentList = studentDAO.findProgram(value);
+            for (Student s : studentList) {
+                list.add(new StudentDTO(s.getSid(), s.getName(), s.getAddress()));
+            }
+            session.getTransaction().commit();
+        } catch (Throwable t) {
+            session.getTransaction().rollback();
+            throw t;
+        } finally {
+            session.close();
+        }
+        return list;
     }
 }

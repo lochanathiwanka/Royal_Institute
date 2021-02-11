@@ -6,7 +6,6 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,7 +28,7 @@
             <Font name="Comic Sans MS" size="28.0" />
          </font>
       </Label>
-      <JFXPasswordField fx:id="txtPassword" labelFloat="true" layoutX="230.0" layoutY="222.0" onKeyReleased="#pwdOnKeyReleased" prefHeight="26.0" prefWidth="238.0" promptText="Password">
+      <JFXPasswordField fx:id="pwd" labelFloat="true" layoutX="230.0" layoutY="222.0" onKeyReleased="#pwdOnKeyReleased" prefHeight="26.0" prefWidth="238.0" promptText="Password">
          <font>
             <Font size="16.0" />
          </font>
@@ -41,11 +40,11 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <TextField fx:id="txtShowedPwd" editable="false" focusTraversable="false" layoutX="422.0" layoutY="275.0" prefHeight="32.0" prefWidth="91.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" visible="false">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="13.0" />
-         </font>
-      </TextField>
       <JFXRadioButton fx:id="rbShowPassword" layoutX="230.0" layoutY="285.0" onAction="#rbShowPassword" text="Show Password" />
+      <JFXTextField fx:id="txtShowedPwd" labelFloat="true" layoutX="230.0" layoutY="222.0" onKeyReleased="#txtShowedPwdOnKeyRelaesed" prefHeight="26.0" prefWidth="238.0" promptText="Password" text="Unmasked-Password" visible="false">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>

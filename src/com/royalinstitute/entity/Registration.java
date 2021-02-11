@@ -8,6 +8,7 @@ public class Registration implements SuperEntity {
     @Id
     private String regId;
     @ManyToOne()
+    @JoinColumn(name = "sid")
     private Student student;
     private String date;
     @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)

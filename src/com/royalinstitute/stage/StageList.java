@@ -8,4 +8,5 @@ public class StageList {
     public static Stage manageStudentsFormStage = new Stage();
     public static Stage manageProgramsFormStage = new Stage();
     public static Stage manageRegistrationFormStage = new Stage();
+    public static Stage makeRegistrationFormStage = new Stage();
 }

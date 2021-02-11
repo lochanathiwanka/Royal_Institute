@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class MainFormController extends StageList {
     public JFXTextField txtUserName;
-    public JFXPasswordField txtPassword;
+    public JFXPasswordField pwd;
     public TextField txtShowedPwd;
     public JFXRadioButton rbShowPassword;
 
@@ -44,7 +44,7 @@ public class MainFormController extends StageList {
                 txtShowedPwd.positionCaret(txtShowedPwd.getCaretPosition()); // If you remove this line, it flashes a little bit
             });
         });
-        txtShowedPwd.setText(txtPassword.getText());
+        txtShowedPwd.setText(pwd.getText());
     }
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
@@ -54,6 +54,20 @@ public class MainFormController extends StageList {
     }
 
     public void rbShowPassword(ActionEvent actionEvent) {
-        txtShowedPwd.setVisible(rbShowPassword.isSelected());
+        if (rbShowPassword.isSelected()) {
+            pwd.setVisible(false);
+            txtShowedPwd.setPrefSize(238, 26);
+            txtShowedPwd.setMaxSize(238, 26);
+            txtShowedPwd.setMinSize(238, 26);
+            txtShowedPwd.requestFocus();
+            txtShowedPwd.setVisible(rbShowPassword.isSelected());
+        } else {
+            pwd.setVisible(true);
+            txtShowedPwd.setVisible(false);
+        }
+    }
+
+    public void txtShowedPwdOnKeyRelaesed(KeyEvent keyEvent) {
+        pwd.setText(txtShowedPwd.getText());
     }
 }

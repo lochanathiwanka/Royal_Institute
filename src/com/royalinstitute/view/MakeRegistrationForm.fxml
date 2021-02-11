@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="584.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.royalinstitute.controller.MakeRegistrationFormController">
+   <children>
+      <TableView fx:id="tblProgram" focusTraversable="false" layoutX="354.0" layoutY="180.0" onMouseClicked="#tblProgramOnMouseClicked" prefHeight="165.0" prefWidth="532.0">
+         <columns>
+            <TableColumn fx:id="clmID" prefWidth="81.0" text="ID" />
+            <TableColumn fx:id="clmProgram" prefWidth="286.0" text="Program" />
+            <TableColumn fx:id="clmDuration" prefWidth="89.0" text="Duration" />
+            <TableColumn fx:id="clmFee" prefWidth="75.0" text="Fee" />
+         </columns>
+         <effect>
+            <DropShadow />
+         </effect>
+      </TableView>
+      <JFXTextField fx:id="txtId" editable="false" focusTraversable="false" labelFloat="true" layoutX="29.0" layoutY="180.0" prefHeight="26.0" prefWidth="133.0" promptText="ID">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtName" labelFloat="true" layoutX="29.0" layoutY="245.0" prefHeight="29.0" prefWidth="278.0" promptText="Name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="29.0" layoutY="314.0" prefHeight="29.0" prefWidth="278.0" promptText="Address">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXComboBox fx:id="cmbId" editable="true" layoutX="205.0" layoutY="183.0" onAction="#cmbIdOnAction" prefHeight="26.0" prefWidth="101.0" promptText="Select" visibleRowCount="5" />
+      <Line endX="784.0" layoutX="114.0" layoutY="409.0" startX="-100.0" />
+      <TableView fx:id="tblCart" layoutX="43.0" layoutY="429.0" onMouseClicked="#tblCartOnMouseClicked" prefHeight="131.0" prefWidth="133.0">
+        <columns>
+          <TableColumn fx:id="clmPid" prefWidth="132.0" text="ID" />
+        </columns>
+         <effect>
+            <DropShadow />
+         </effect>
+      </TableView>
+      <JFXButton fx:id="btnRemove" buttonType="RAISED" layoutX="256.0" layoutY="482.0" onAction="#btnRemoveOnAction" style="-fx-background-color: #203946; -fx-background-radius: 30; -fx-border-radius: 30;" text="Remove" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnClear" buttonType="RAISED" layoutX="379.0" layoutY="482.0" onAction="#btnClearOnAction" style="-fx-background-color: #203946; -fx-background-radius: 30; -fx-border-radius: 30;" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnRegister" buttonType="RAISED" layoutX="484.0" layoutY="482.0" onAction="#btnRegisterOnAction" style="-fx-background-color: #203946; -fx-background-radius: 30; -fx-border-radius: 30;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="546.0" layoutY="362.0" onAction="#btnAddOnAction" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: #203946; -fx-background-radius: 30; -fx-border-radius: 30;" text="Add" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="txtRegId" layoutX="120.0" layoutY="97.0" prefHeight="26.0" prefWidth="72.0" style="-fx-text-fill: red;" />
+      <TextField fx:id="txtDate" layoutX="584.0" layoutY="96.0" prefHeight="26.0" prefWidth="118.0" style="-fx-text-fill: red;" />
+      <TextField fx:id="txtTime" layoutX="729.0" layoutY="96.0" prefHeight="26.0" prefWidth="118.0" style="-fx-text-fill: red;" />
+      <AnchorPane fx:id="titlePane" layoutX="291.0" layoutY="14.0" prefHeight="63.0" prefWidth="278.0">
+         <children>
+            <AnchorPane prefHeight="63.0" prefWidth="198.0" style="-fx-background-color: #6ec55d; -fx-background-radius: 30;">
+               <children>
+                  <Label layoutX="14.0" layoutY="5.0" text="Registration" textFill="WHITE">
+                     <font>
+                        <Font name="Dyuthi Regular" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="180.0" prefHeight="63.0" prefWidth="70.0" style="-fx-background-color: #7c8785; -fx-background-radius: 30;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

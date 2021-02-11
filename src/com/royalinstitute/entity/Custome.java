@@ -1,42 +1,28 @@
-package com.royalinstitute.dto;
+package com.royalinstitute.entity;
 
-public class CustomeDTO {
+public class Custome implements SuperEntity {
     private String sid;
     private String name;
     private String address;
-
-    private String pid;
 
     private String regId;
     private String date;
     private String program;
 
-    public CustomeDTO() {
+    public Custome() {
     }
 
-    public CustomeDTO(String sid, String regId, String name, String address) {
+    public Custome(String sid, String regId, String name, String address) {
         this.sid = sid;
         this.regId = regId;
         this.name = name;
         this.address = address;
     }
 
-    public CustomeDTO(String regId, String date, String program) {
+    public Custome(String regId, String date, String program) {
         this.regId = regId;
         this.date = date;
         this.program = program;
-    }
-
-    public CustomeDTO(String pid) {
-        this.pid = pid;
-    }
-
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid;
     }
 
     public String getRegId() {

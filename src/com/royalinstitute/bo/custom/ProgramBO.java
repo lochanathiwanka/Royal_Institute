@@ -17,4 +17,6 @@ public interface ProgramBO extends SuperBO {
     void delete(String id) throws Exception;
 
     List<ProgramDTO> findProgram(String value) throws Exception;
+
+    ProgramDTO search(String id) throws Exception;
 }

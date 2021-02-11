@@ -1,9 +1,6 @@
 package com.royalinstitute.dao;
 
-import com.royalinstitute.dao.custome.impl.ProgramDAOImpl;
-import com.royalinstitute.dao.custome.impl.RegistrationDAOImpl;
-import com.royalinstitute.dao.custome.impl.RegistrationDetailDAOImpl;
-import com.royalinstitute.dao.custome.impl.StudentDAOImpl;
+import com.royalinstitute.dao.custome.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -17,7 +14,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes {
-        STUDENT, PROGRAM, REGISTRATION, REGISTRATIONDETAIL
+        STUDENT, PROGRAM, REGISTRATION, REGISTRATIONDETAIL, QUERY
     }
 
     public <T extends SuperDAO> T getDAO(DAOTypes daoTypes) {
@@ -30,6 +27,8 @@ public class DAOFactory {
                 return (T) new RegistrationDAOImpl();
             case REGISTRATIONDETAIL:
                 return (T) new RegistrationDetailDAOImpl();
+            case QUERY:
+                return (T) new QueryDAOImpl();
             default:
                 return null;
         }

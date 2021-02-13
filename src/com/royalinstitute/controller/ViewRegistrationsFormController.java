@@ -152,6 +152,9 @@ public class ViewRegistrationsFormController {
         txtSid.clear();
         txtName.clear();
         txtAddress.clear();
+        txtContact.clear();
+        txtDOB.clear();
+        txtGender.clear();
         tblProgramAndRegistration.getItems().clear();
     }
 

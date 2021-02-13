@@ -195,7 +195,7 @@ public class ManageProgramsFormController extends StageList {
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) {
-        if (checkRegEx("^[A-z\\s0-9]{1,}$", txtProgram.getText())) {
+        if (checkRegEx("^[A-z\\s\\-0-9]{1,}$", txtProgram.getText())) {
             txtDuration.requestFocus();
             if (checkRegEx("^[A-z\\s0-9]{1,}$", txtDuration.getText())) {
                 txtFee.requestFocus();
@@ -230,7 +230,7 @@ public class ManageProgramsFormController extends StageList {
     }
 
     public void txtProgramOnAction(ActionEvent actionEvent) {
-        if (checkRegEx("^[A-z\\s0-9]{1,}$", txtProgram.getText())) {
+        if (checkRegEx("^[A-z\\s\\-0-9]{1,}$", txtProgram.getText())) {
             txtDuration.requestFocus();
         } else {
             TrayNotification notification = new TrayNotification();
@@ -256,7 +256,7 @@ public class ManageProgramsFormController extends StageList {
     }
 
     public void txtFeeOnAction(ActionEvent actionEvent) {
-        if (checkRegEx("^[A-z\\s0-9]{1,}$", txtProgram.getText())) {
+        if (checkRegEx("^[A-z\\s\\-0-9]{1,}$", txtProgram.getText())) {
             if (checkRegEx("^[A-z\\s0-9]{1,}$", txtDuration.getText())) {
                 if (checkRegEx("^[0-9\\.]{1,}$", txtFee.getText())) {
                     addProgram();

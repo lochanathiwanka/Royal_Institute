@@ -127,6 +127,9 @@ public class ManageStudentsFormController extends StageList {
         txtID.clear();
         txtName.clear();
         txtAddress.clear();
+        txtContact.clear();
+        txtDOB.clear();
+        txtGender.clear();
     }
 
     public void btnRefreshOnAction(ActionEvent actionEvent) {

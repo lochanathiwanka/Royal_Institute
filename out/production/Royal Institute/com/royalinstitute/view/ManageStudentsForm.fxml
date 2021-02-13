@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="440.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.royalinstitute.controller.ManageStudentsFormController">
+<AnchorPane prefHeight="559.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.royalinstitute.controller.ManageStudentsFormController">
    <children>
       <TableView fx:id="tblStudents" focusTraversable="false" layoutX="23.0" layoutY="141.0" onMouseClicked="#tblStudentsOnMouseClicked" prefHeight="200.0" prefWidth="349.0">
         <columns>
@@ -34,7 +34,7 @@
       <Label alignment="CENTER" layoutX="438.0" layoutY="267.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Name" textFill="WHITE" />
       <TextField fx:id="txtAddress" layoutX="509.0" layoutY="306.0" style="-fx-background-radius: 10;" />
       <Label alignment="CENTER" layoutX="438.0" layoutY="306.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Address" textFill="WHITE" />
-      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="534.0" layoutY="381.0" onAction="#btnUpdateOnAction" style="-fx-background-color: #647C90;" text="Update" textFill="WHITE">
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="533.0" layoutY="494.0" onAction="#btnUpdateOnAction" style="-fx-background-color: #647C90;" text="Update" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
@@ -42,7 +42,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="615.0" layoutY="381.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: #647C90;" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="614.0" layoutY="494.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: #647C90;" text="Delete" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
@@ -77,5 +77,11 @@
             <AnchorPane layoutX="265.0" prefHeight="63.0" prefWidth="70.0" style="-fx-background-color: #7c8785; -fx-background-radius: 30;" />
          </children>
       </AnchorPane>
+      <TextField fx:id="txtContact" editable="false" layoutX="509.0" layoutY="348.0" style="-fx-background-radius: 10;" />
+      <Label alignment="CENTER" layoutX="438.0" layoutY="348.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Contact" textFill="WHITE" />
+      <TextField fx:id="txtDOB" editable="false" layoutX="509.0" layoutY="387.0" style="-fx-background-radius: 10;" />
+      <Label alignment="CENTER" layoutX="438.0" layoutY="387.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="DOB" textFill="WHITE" />
+      <TextField fx:id="txtGender" editable="false" layoutX="509.0" layoutY="426.0" style="-fx-background-radius: 10;" />
+      <Label alignment="CENTER" layoutX="438.0" layoutY="426.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Gender" textFill="WHITE" />
    </children>
 </AnchorPane>

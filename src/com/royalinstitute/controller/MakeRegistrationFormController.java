@@ -365,7 +365,7 @@ public class MakeRegistrationFormController extends StageList {
     public void cmbGenderOnAction(ActionEvent actionEvent) {
         try {
             txtGender.setText(cmbGender.getSelectionModel().getSelectedItem().toString());
-        } catch (NumberFormatException ex) {}
+        } catch (NullPointerException ex) {}
     }
 
     public boolean checkRegEx(String pattern, String text) {

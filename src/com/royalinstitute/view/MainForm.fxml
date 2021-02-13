@@ -18,7 +18,7 @@
             <Image url="@../asserts/bg/login.jpg" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="txtUserName" labelFloat="true" layoutX="230.0" layoutY="146.0" prefHeight="26.0" prefWidth="238.0" promptText="User Name">
+      <JFXTextField fx:id="txtUserName" labelFloat="true" layoutX="230.0" layoutY="146.0" onAction="#txtUserNameOnAction" prefHeight="26.0" prefWidth="238.0" promptText="User Name">
          <font>
             <Font size="16.0" />
          </font>
@@ -28,7 +28,7 @@
             <Font name="Comic Sans MS" size="28.0" />
          </font>
       </Label>
-      <JFXPasswordField fx:id="pwd" labelFloat="true" layoutX="230.0" layoutY="222.0" onKeyReleased="#pwdOnKeyReleased" prefHeight="26.0" prefWidth="238.0" promptText="Password">
+      <JFXPasswordField fx:id="pwd" labelFloat="true" layoutX="230.0" layoutY="222.0" onAction="#pwdOnAction" onKeyReleased="#pwdOnKeyReleased" prefHeight="26.0" prefWidth="238.0" promptText="Password">
          <font>
             <Font size="16.0" />
          </font>
@@ -41,7 +41,7 @@
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
       <JFXRadioButton fx:id="rbShowPassword" layoutX="230.0" layoutY="285.0" onAction="#rbShowPassword" text="Show Password" />
-      <JFXTextField fx:id="txtShowedPwd" labelFloat="true" layoutX="230.0" layoutY="222.0" onKeyReleased="#txtShowedPwdOnKeyRelaesed" prefHeight="26.0" prefWidth="238.0" promptText="Password" text="Unmasked-Password" visible="false">
+      <JFXTextField fx:id="txtShowedPwd" labelFloat="true" layoutX="230.0" layoutY="222.0" onAction="#txtShowedPwdOnAction" onKeyReleased="#txtShowedPwdOnKeyRelaesed" prefHeight="26.0" prefWidth="238.0" promptText="Password" text="Unmasked-Password" visible="false">
          <font>
             <Font size="16.0" />
          </font>

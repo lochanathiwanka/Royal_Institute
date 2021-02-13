@@ -29,6 +29,7 @@ public class RegistrationDetailBOImpl implements RegistrationDetailBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }
@@ -50,6 +51,7 @@ public class RegistrationDetailBOImpl implements RegistrationDetailBO {
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
+            throw t;
         } finally {
             session.close();
         }

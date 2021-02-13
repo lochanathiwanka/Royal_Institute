@@ -11,14 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="413.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.royalinstitute.controller.ManageStudentsFormController">
+<AnchorPane prefHeight="440.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.royalinstitute.controller.ManageStudentsFormController">
    <children>
-      <Label layoutX="282.0" layoutY="22.0" text="Manage Students">
-         <font>
-            <Font name="Ubuntu" size="22.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tblStudents" focusTraversable="false" layoutX="21.0" layoutY="111.0" onMouseClicked="#tblStudentsOnMouseClicked" prefHeight="200.0" prefWidth="349.0">
+      <TableView fx:id="tblStudents" focusTraversable="false" layoutX="23.0" layoutY="141.0" onMouseClicked="#tblStudentsOnMouseClicked" prefHeight="200.0" prefWidth="349.0">
         <columns>
           <TableColumn fx:id="clmID" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="clmName" prefWidth="162.0" text="Name" />
@@ -28,18 +23,18 @@
             <DropShadow />
          </effect>
       </TableView>
-      <JFXTextField fx:id="txtFind" labelFloat="true" layoutX="436.0" layoutY="111.0" onKeyReleased="#txtFindOnActionOnKeyReleased" promptText="Find Student">
+      <JFXTextField fx:id="txtFind" labelFloat="true" layoutX="438.0" layoutY="141.0" onKeyReleased="#txtFindOnActionOnKeyReleased" promptText="Find Student">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <TextField fx:id="txtID" editable="false" layoutX="507.0" layoutY="198.0" style="-fx-background-radius: 10;" />
-      <Label alignment="CENTER" layoutX="436.0" layoutY="198.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="ID" textFill="WHITE" />
-      <TextField fx:id="txtName" layoutX="507.0" layoutY="237.0" style="-fx-background-radius: 10;" />
-      <Label alignment="CENTER" layoutX="436.0" layoutY="237.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Name" textFill="WHITE" />
-      <TextField fx:id="txtAddress" layoutX="507.0" layoutY="276.0" style="-fx-background-radius: 10;" />
-      <Label alignment="CENTER" layoutX="436.0" layoutY="276.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Address" textFill="WHITE" />
-      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="532.0" layoutY="351.0" onAction="#btnUpdateOnAction" style="-fx-background-color: #647C90;" text="Update" textFill="WHITE">
+      <TextField fx:id="txtID" editable="false" layoutX="509.0" layoutY="228.0" style="-fx-background-radius: 10;" />
+      <Label alignment="CENTER" layoutX="438.0" layoutY="228.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="ID" textFill="WHITE" />
+      <TextField fx:id="txtName" layoutX="509.0" layoutY="267.0" style="-fx-background-radius: 10;" />
+      <Label alignment="CENTER" layoutX="438.0" layoutY="267.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Name" textFill="WHITE" />
+      <TextField fx:id="txtAddress" layoutX="509.0" layoutY="306.0" style="-fx-background-radius: 10;" />
+      <Label alignment="CENTER" layoutX="438.0" layoutY="306.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Address" textFill="WHITE" />
+      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="534.0" layoutY="381.0" onAction="#btnUpdateOnAction" style="-fx-background-color: #647C90;" text="Update" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
@@ -47,7 +42,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="613.0" layoutY="351.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: #647C90;" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="615.0" layoutY="381.0" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: #647C90;" text="Delete" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
@@ -55,7 +50,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btnRefresh" buttonType="RAISED" layoutX="143.0" layoutY="325.0" onAction="#btnRefreshOnAction" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #647C90; -fx-background-radius: 20; -fx-border-radius: 20;" text="Refresh" textFill="WHITE">
+      <JFXButton fx:id="btnRefresh" buttonType="RAISED" layoutX="145.0" layoutY="355.0" onAction="#btnRefreshOnAction" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #647C90; -fx-background-radius: 20; -fx-border-radius: 20;" text="Refresh" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="13.0" />
          </font>
@@ -68,5 +63,19 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <AnchorPane fx:id="titlePane" layoutX="201.0" layoutY="14.0" prefHeight="63.0" prefWidth="339.0">
+         <children>
+            <AnchorPane prefHeight="63.0" prefWidth="284.0" style="-fx-background-color: #6ec55d; -fx-background-radius: 30;">
+               <children>
+                  <Label layoutX="29.0" layoutY="5.0" text="Manage Students" textFill="WHITE">
+                     <font>
+                        <Font name="Dyuthi Regular" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="265.0" prefHeight="63.0" prefWidth="70.0" style="-fx-background-color: #7c8785; -fx-background-radius: 30;" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -15,16 +15,13 @@
 
 <AnchorPane prefHeight="584.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.royalinstitute.controller.MakeRegistrationFormController">
    <children>
-      <TableView fx:id="tblProgram" focusTraversable="false" layoutX="354.0" layoutY="180.0" onMouseClicked="#tblProgramOnMouseClicked" prefHeight="165.0" prefWidth="532.0">
+      <TableView fx:id="tblProgram" focusTraversable="false" layoutX="366.0" layoutY="144.0" onMouseClicked="#tblProgramOnMouseClicked" prefHeight="202.0" prefWidth="532.0" stylesheets="@../css/table-view.css">
          <columns>
             <TableColumn fx:id="clmID" prefWidth="81.0" text="ID" />
             <TableColumn fx:id="clmProgram" prefWidth="286.0" text="Program" />
             <TableColumn fx:id="clmDuration" prefWidth="89.0" text="Duration" />
             <TableColumn fx:id="clmFee" prefWidth="75.0" text="Fee" />
          </columns>
-         <effect>
-            <DropShadow />
-         </effect>
       </TableView>
       <JFXTextField fx:id="txtId" editable="false" focusTraversable="false" labelFloat="true" layoutX="29.0" layoutY="180.0" prefHeight="26.0" prefWidth="133.0" promptText="ID">
          <font>

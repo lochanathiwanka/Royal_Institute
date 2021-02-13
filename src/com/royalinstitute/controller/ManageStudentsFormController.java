@@ -1,5 +1,6 @@
 package com.royalinstitute.controller;
 
+import animatefx.animation.ZoomIn;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.royalinstitute.bo.BOFactory;
@@ -15,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -30,6 +32,7 @@ public class ManageStudentsFormController extends StageList {
     public JFXButton btnDelete;
     public JFXButton btnRefresh;
     public JFXTextField txtFind;
+    public AnchorPane titlePane;
 
     @FXML
     private TableView<StudentDTO> tblStudents;
@@ -47,6 +50,7 @@ public class ManageStudentsFormController extends StageList {
 
     public void initialize() {
         getAllStudent();
+        new ZoomIn(titlePane).setSpeed(0.4).play();
     }
 
     private void getAllStudent() {

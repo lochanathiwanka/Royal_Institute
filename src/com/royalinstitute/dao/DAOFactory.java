@@ -14,7 +14,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes {
-        STUDENT, PROGRAM, REGISTRATION, REGISTRATIONDETAIL, QUERY
+        STUDENT, PROGRAM, REGISTRATION, REGISTRATIONDETAIL, QUERY, USER
     }
 
     public <T extends SuperDAO> T getDAO(DAOTypes daoTypes) {
@@ -29,6 +29,8 @@ public class DAOFactory {
                 return (T) new RegistrationDetailDAOImpl();
             case QUERY:
                 return (T) new QueryDAOImpl();
+            case USER:
+                return (T) new UserDAOImpl();
             default:
                 return null;
         }

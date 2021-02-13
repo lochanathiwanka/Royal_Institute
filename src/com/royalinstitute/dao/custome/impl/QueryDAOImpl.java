@@ -18,10 +18,10 @@ public class QueryDAOImpl implements QueryDAO {
 
     @Override
     public List<Custome> getRegDetailsBySid(String sid) throws Exception {
-        NativeQuery sqlQuery = session.createSQLQuery("SELECT rd.regId, date, program FROM Student s, Registration r, RegistrationDetail rd, " +
-                "Program p WHERE s.sid = r.sid AND r.regId = rd.regId AND p.pid = rd.pid AND s.sid = ?1");
-        sqlQuery.setParameter(1, sid);
-        List<Object[]> list = sqlQuery.list();
+        Query query = session.createQuery("SELECT r.regId, r.date, p.program FROM Registration r " +
+                "INNER JOIN r.student s INNER JOIN r.registrationDetailList rd INNER JOIN rd.program p WHERE s.sid = ?1");
+        query.setParameter(1, sid);
+        List<Object[]> list = query.list();
         List<Custome> all = new ArrayList<>();
 
         for (Object[] objects : list) {
@@ -32,10 +32,10 @@ public class QueryDAOImpl implements QueryDAO {
 
     @Override
     public List<Custome> getRegDetailsByPid(String pid) throws Exception {
-        NativeQuery sqlQuery = session.createSQLQuery("SELECT s.sid, r.regId, s.name, s.address FROM Student s, Registration r, RegistrationDetail rd, " +
-                "Program p WHERE (s.sid = r.sid && r.regId = rd.regId && p.pid = rd.pid) AND p.pid = ?1");
-        sqlQuery.setParameter(1, pid);
-        List<Object[]> list = sqlQuery.list();
+        Query query = session.createQuery("SELECT s.sid, r.regId, s.name, s.address FROM Registration r " +
+                "INNER JOIN r.student s INNER JOIN r.registrationDetailList rd INNER JOIN rd.program p WHERE p.pid = ?1");
+        query.setParameter(1, pid);
+        List<Object[]> list = query.list();
         List<Custome> all = new ArrayList<>();
 
         for (Object[] objects : list) {

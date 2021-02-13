@@ -1,9 +1,6 @@
 package com.royalinstitute.bo;
 
-import com.royalinstitute.bo.custom.impl.ProgramBOImpl;
-import com.royalinstitute.bo.custom.impl.RegistrationBOImpl;
-import com.royalinstitute.bo.custom.impl.RegistrationDetailBOImpl;
-import com.royalinstitute.bo.custom.impl.StudentBOImpl;
+import com.royalinstitute.bo.custom.impl.*;
 import com.royalinstitute.dao.custome.impl.RegistrationDetailDAOImpl;
 
 public class BOFactory {
@@ -18,7 +15,7 @@ public class BOFactory {
     }
 
     public enum BOTypes {
-        STUDENT, PROGRAM, REGISTRATION, REGISTRATIONDETAIL
+        STUDENT, PROGRAM, REGISTRATION, REGISTRATIONDETAIL, USER
     }
 
     public <T extends SuperBO> T getBO(BOTypes boTypes) {
@@ -31,6 +28,8 @@ public class BOFactory {
                 return (T) new RegistrationBOImpl();
             case REGISTRATIONDETAIL:
                 return (T) new RegistrationDetailBOImpl();
+            case USER:
+                return (T) new UserBOImpl();
             default:
                 return null;
         }

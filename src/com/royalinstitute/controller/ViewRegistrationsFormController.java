@@ -99,7 +99,6 @@ public class ViewRegistrationsFormController {
     private void addValuesToCmbProgram() {
         try {
             cmbPid.getItems().clear();
-            cmbPid.getItems().add("All");
             List<ProgramDTO> list = programBO.getAll();
             for (ProgramDTO programDTO : list) {
                 cmbPid.getItems().add(programDTO.getPid());
@@ -173,7 +172,7 @@ public class ViewRegistrationsFormController {
             rows.addAll(list);
             tblProgramAndRegistration.setItems(rows);
             setTblProgramAndRegistrationCellValue();
-        } catch (Exception ex) {
+        } catch (Exception e) {
         }
     }
 
@@ -204,7 +203,7 @@ public class ViewRegistrationsFormController {
             rows.addAll(list);
             tblStudentAndRegistration.setItems(rows);
             setTblStudentAndRegistrationCellValue();
-        } catch (Exception ex) {
+        } catch (Exception e) {
         }
     }
 }

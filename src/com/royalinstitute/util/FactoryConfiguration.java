@@ -1,9 +1,6 @@
 package com.royalinstitute.util;
 
-import com.royalinstitute.entity.Program;
-import com.royalinstitute.entity.Registration;
-import com.royalinstitute.entity.RegistrationDetail;
-import com.royalinstitute.entity.Student;
+import com.royalinstitute.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -17,7 +14,8 @@ public class FactoryConfiguration {
                 .addAnnotatedClass(Student.class)
                 .addAnnotatedClass(Registration.class)
                 .addAnnotatedClass(RegistrationDetail.class)
-                .addAnnotatedClass(Program.class);
+                .addAnnotatedClass(Program.class)
+                .addAnnotatedClass(User.class);
 
         sessionFactory = configuration.buildSessionFactory();
     }

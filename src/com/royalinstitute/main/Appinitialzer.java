@@ -20,6 +20,7 @@ public class Appinitialzer extends Application {
         try {
             StageList.mainFormStage = primaryStage;
             primaryStage.setScene(new Scene((Parent) FXMLLoader.load(this.getClass().getResource("../view/MainForm.fxml"))));
+            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();

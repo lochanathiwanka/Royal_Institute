@@ -6,6 +6,7 @@ public class RegistrationDTO {
     private String regId;
     private String sid;
     private String date;
+    private double fee;
     private List<RegistrationDetailDTO> registrationDetailDTOList;
 
     public RegistrationDTO() {
@@ -15,6 +16,14 @@ public class RegistrationDTO {
         this.regId = regId;
         this.sid = sid;
         this.date = date;
+        this.registrationDetailDTOList = registrationDetailDTOList;
+    }
+
+    public RegistrationDTO(String regId, String sid, String date, double fee, List<RegistrationDetailDTO> registrationDetailDTOList) {
+        this.regId = regId;
+        this.sid = sid;
+        this.date = date;
+        this.fee = fee;
         this.registrationDetailDTOList = registrationDetailDTOList;
     }
 
@@ -48,5 +57,13 @@ public class RegistrationDTO {
 
     public void setRegistrationDetailDTOList(List<RegistrationDetailDTO> registrationDetailDTOList) {
         this.registrationDetailDTOList = registrationDetailDTOList;
+    }
+
+    public double getFee() {
+        return fee;
+    }
+
+    public void setFee(double fee) {
+        this.fee = fee;
     }
 }

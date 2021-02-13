@@ -46,7 +46,7 @@ public class StudentBOImpl implements StudentBO {
         try {
             List<Student> all = studentDAO.getAll();
             for (Student s : all) {
-                list.add(new StudentDTO(s.getSid(), s.getName(), s.getAddress()));
+                list.add(new StudentDTO(s.getSid(), s.getName(), s.getAddress(), s.getContact(), s.getDob(), s.getGender()));
             }
             session.getTransaction().commit();
         } catch (Throwable t) {
@@ -67,7 +67,7 @@ public class StudentBOImpl implements StudentBO {
         StudentDTO studentDTO = null;
         try {
             Student s = studentDAO.search(id);
-            studentDTO = new StudentDTO(s.getSid(), s.getName(),s.getAddress());
+            studentDTO = new StudentDTO(s.getSid(), s.getName(),s.getAddress(), s.getContact(), s.getDob(), s.getGender());
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
@@ -85,7 +85,8 @@ public class StudentBOImpl implements StudentBO {
         session.getTransaction().begin();
 
         try {
-            studentDAO.update(new Student(student.getSid(), student.getName(), student.getAddress()));
+            studentDAO.update(new Student(student.getSid(), student.getName(), student.getAddress(),
+                    student.getContact(), student.getDob(), student.getGender()));
             session.getTransaction().commit();
         } catch (Throwable t) {
             session.getTransaction().rollback();
@@ -120,9 +121,9 @@ public class StudentBOImpl implements StudentBO {
 
         List<StudentDTO> list = new ArrayList<>();
         try {
-            List<Student> studentList = studentDAO.findProgram(value);
+            List<Student> studentList = studentDAO.findStudent(value);
             for (Student s : studentList) {
-                list.add(new StudentDTO(s.getSid(), s.getName(), s.getAddress()));
+                list.add(new StudentDTO(s.getSid(), s.getName(), s.getAddress(), s.getContact(), s.getDob(), s.getGender()));
             }
             session.getTransaction().commit();
         } catch (Throwable t) {

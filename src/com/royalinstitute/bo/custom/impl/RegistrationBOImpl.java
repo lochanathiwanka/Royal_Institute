@@ -43,10 +43,14 @@ public class RegistrationBOImpl implements RegistrationBO {
             student.setSid(s.getSid());
             student.setName(s.getName());
             student.setAddress(s.getAddress());
+            student.setContact(s.getContact());
+            student.setDob(s.getDob());
+            student.setGender(s.getGender());
 
             Registration registration = new Registration();
             registration.setRegId(registrationDTO.getRegId());
             registration.setDate(registrationDTO.getDate());
+            registration.setFee(registrationDTO.getFee());
             registration.setStudent(student);
 
             List<RegistrationDetail> regDetailList = new ArrayList<>();

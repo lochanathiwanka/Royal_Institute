@@ -11,21 +11,17 @@ public class Registration implements SuperEntity {
     @JoinColumn(name = "sid")
     private Student student;
     private String date;
+    private double fee;
     @OneToMany(mappedBy = "registration", cascade = CascadeType.ALL)
     private List<RegistrationDetail> registrationDetailList;
 
     public Registration() {
     }
 
-    public Registration(String regId, String date) {
+    public Registration(String regId, String date, double fee) {
         this.regId = regId;
         this.date = date;
-    }
-
-    public Registration(String regId, String date, Student student) {
-        this.regId = regId;
-        this.date = date;
-        this.student = student;
+        this.fee = fee;
     }
 
     public Registration(String regId, Student student, String date, List<RegistrationDetail> registrationDetailList) {
@@ -49,6 +45,14 @@ public class Registration implements SuperEntity {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public double getFee() {
+        return fee;
+    }
+
+    public void setFee(double fee) {
+        this.fee = fee;
     }
 
     public Student getStudent() {

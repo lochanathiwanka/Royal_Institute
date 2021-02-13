@@ -46,6 +46,12 @@ public class ViewRegistrationsFormController {
     public Label lblFee;
     public JFXTextField txtStudents;
     public JFXTextField txtPrograms;
+    public TextField txtContact;
+    public Label lblContact;
+    public TextField txtDOB;
+    public Label lblDOB;
+    public TextField txtGender;
+    public Label lblGender;
 
     @FXML
     private TableView<CustomeDTO> tblStudentAndRegistration;
@@ -116,6 +122,12 @@ public class ViewRegistrationsFormController {
         txtName.setDisable(value);
         lblAddress.setDisable(value);
         txtAddress.setDisable(value);
+        lblContact.setDisable(value);
+        txtContact.setDisable(value);
+        lblDOB.setDisable(value);
+        txtDOB.setDisable(value);
+        lblGender.setDisable(value);
+        txtGender.setDisable(value);
         tblProgramAndRegistration.setDisable(value);
     }
 
@@ -166,6 +178,9 @@ public class ViewRegistrationsFormController {
             txtSid.setText(student.getSid());
             txtName.setText(student.getName());
             txtAddress.setText(student.getAddress());
+            txtContact.setText(student.getContact());
+            txtDOB.setText(student.getDob());
+            txtGender.setText(student.getGender());
 
             List<CustomeDTO> list = registrationDetailBO.getRegDetailsBySid(student.getSid());
             ObservableList<CustomeDTO> rows = FXCollections.observableArrayList();

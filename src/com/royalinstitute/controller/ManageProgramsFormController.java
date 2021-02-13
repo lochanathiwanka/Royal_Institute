@@ -181,6 +181,7 @@ public class ManageProgramsFormController extends StageList {
             txtProgram.clear();
             txtDuration.clear();
             txtFee.clear();
+            txtProgram.requestFocus();
             new Alert(Alert.AlertType.CONFIRMATION, "Program added!", ButtonType.OK).show();
         } catch (Exception e) {
 //            e.printStackTrace();

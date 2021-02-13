@@ -33,6 +33,9 @@ public class ManageStudentsFormController extends StageList {
     public JFXButton btnRefresh;
     public JFXTextField txtFind;
     public AnchorPane titlePane;
+    public TextField txtContact;
+    public TextField txtDOB;
+    public TextField txtGender;
 
     @FXML
     private TableView<StudentDTO> tblStudents;
@@ -140,6 +143,9 @@ public class ManageStudentsFormController extends StageList {
             txtID.setText(tblStudents.getSelectionModel().getSelectedItem().getSid());
             txtName.setText(tblStudents.getSelectionModel().getSelectedItem().getName());
             txtAddress.setText(tblStudents.getSelectionModel().getSelectedItem().getAddress());
+            txtContact.setText(tblStudents.getSelectionModel().getSelectedItem().getContact());
+            txtDOB.setText(tblStudents.getSelectionModel().getSelectedItem().getDob());
+            txtGender.setText(tblStudents.getSelectionModel().getSelectedItem().getGender());
         } catch (NullPointerException ex) {}
     }
 }

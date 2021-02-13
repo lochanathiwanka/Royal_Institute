@@ -12,10 +12,28 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="584.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.royalinstitute.controller.ViewRegistrationsFormController">
+<AnchorPane prefHeight="746.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.royalinstitute.controller.ViewRegistrationsFormController">
    <children>
-      <AnchorPane fx:id="programPane" layoutX="463.0" layoutY="87.0" onMouseEntered="#programPaneOnMouseEntered" prefHeight="492.0" prefWidth="435.0" />
-      <AnchorPane fx:id="studentPane" layoutX="15.0" layoutY="86.0" onMouseEntered="#studentPaneOnMouseEntered" prefHeight="492.0" prefWidth="435.0" />
+      <AnchorPane fx:id="programPane" layoutX="463.0" layoutY="87.0" onMouseEntered="#programPaneOnMouseEntered" prefHeight="492.0" prefWidth="435.0">
+         <children>
+            <TextField fx:id="txtPid" editable="false" layoutX="199.0" layoutY="176.0" style="-fx-background-radius: 10;" />
+            <Label fx:id="lblPid" alignment="CENTER" layoutX="128.0" layoutY="176.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="ID" textFill="WHITE" />
+            <TextField fx:id="txtProgram" editable="false" layoutX="199.0" layoutY="215.0" style="-fx-background-radius: 10;" />
+            <Label fx:id="lblProgram" alignment="CENTER" layoutX="128.0" layoutY="215.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Program" textFill="WHITE" />
+            <TextField fx:id="txtDuration" editable="false" layoutX="199.0" layoutY="254.0" style="-fx-background-radius: 10;" />
+            <Label fx:id="lblDuration" alignment="CENTER" layoutX="128.0" layoutY="254.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Duration" textFill="WHITE" />
+            <TextField fx:id="txtFee" editable="false" layoutX="199.0" layoutY="296.0" style="-fx-background-radius: 10;" />
+            <Label fx:id="lblFee" alignment="CENTER" layoutX="128.0" layoutY="296.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Fee" textFill="WHITE" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="studentPane" layoutX="15.0" layoutY="86.0" onMouseEntered="#studentPaneOnMouseEntered" prefHeight="492.0" prefWidth="435.0">
+         <children>
+            <TextField fx:id="txtContact" editable="false" layoutX="122.0" layoutY="236.0" style="-fx-background-radius: 10;" />
+            <Label fx:id="lblContact" alignment="CENTER" layoutX="51.0" layoutY="236.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Contact" textFill="WHITE" />
+            <TextField fx:id="txtDOB" editable="false" layoutX="122.0" layoutY="275.0" style="-fx-background-radius: 10;" />
+            <Label fx:id="lblDOB" alignment="CENTER" layoutX="51.0" layoutY="275.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="DOB" textFill="WHITE" />
+            <TextField fx:id="txtGender" editable="false" layoutX="122.0" layoutY="314.0" style="-fx-background-radius: 10;" />
+            <Label fx:id="lblGender" alignment="CENTER" layoutX="51.0" layoutY="314.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Gender" textFill="WHITE" />
+         </children></AnchorPane>
       <AnchorPane fx:id="titlePane" layoutX="277.0" layoutY="14.0" prefHeight="63.0" prefWidth="358.0">
          <children>
             <AnchorPane prefHeight="63.0" prefWidth="278.0" style="-fx-background-color: #6ec55d; -fx-background-radius: 30;">
@@ -30,7 +48,7 @@
             <AnchorPane layoutX="258.0" prefHeight="63.0" prefWidth="70.0" style="-fx-background-color: #7c8785; -fx-background-radius: 30;" />
          </children>
       </AnchorPane>
-      <TableView fx:id="tblStudentAndRegistration" focusTraversable="false" layoutX="505.0" layoutY="370.0" onMouseClicked="#tblStudentAndRegistrationOnMouseClicked" prefHeight="200.0" prefWidth="379.0">
+      <TableView fx:id="tblStudentAndRegistration" focusTraversable="false" layoutX="505.0" layoutY="515.0" onMouseClicked="#tblStudentAndRegistrationOnMouseClicked" prefHeight="200.0" prefWidth="379.0">
          <columns>
             <TableColumn fx:id="clmSid" prefWidth="63.0" text="SID" />
             <TableColumn fx:id="clmRegId2" prefWidth="68.0" text="RegId" />
@@ -41,7 +59,7 @@
             <DropShadow />
          </effect>
       </TableView>
-      <TableView fx:id="tblProgramAndRegistration" focusTraversable="false" layoutX="28.0" layoutY="370.0" onMouseClicked="#tblProgramAndRegistrationOnAction" prefHeight="200.0" prefWidth="379.0">
+      <TableView fx:id="tblProgramAndRegistration" focusTraversable="false" layoutX="28.0" layoutY="515.0" onMouseClicked="#tblProgramAndRegistrationOnAction" prefHeight="200.0" prefWidth="379.0">
          <columns>
             <TableColumn fx:id="clmRegId1" prefWidth="81.0" text="RegId" />
             <TableColumn fx:id="clmDate" prefWidth="113.0" text="Date" />
@@ -74,15 +92,7 @@
       <TextField fx:id="txtAddress" editable="false" layoutX="135.0" layoutY="286.0" style="-fx-background-radius: 10;" />
       <Label fx:id="lblAddress" alignment="CENTER" layoutX="64.0" layoutY="286.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Address" textFill="WHITE" />
       <JFXComboBox fx:id="cmbSid" editable="true" layoutX="64.0" layoutY="151.0" onAction="#cmbSidOnAction" prefHeight="26.0" prefWidth="101.0" promptText="Select" visibleRowCount="5" />
-      <TextField fx:id="txtPid" editable="false" layoutX="674.0" layoutY="200.0" style="-fx-background-radius: 10;" />
-      <Label fx:id="lblPid" alignment="CENTER" layoutX="603.0" layoutY="200.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="ID" textFill="WHITE" />
-      <TextField fx:id="txtProgram" editable="false" layoutX="674.0" layoutY="239.0" style="-fx-background-radius: 10;" />
-      <Label fx:id="lblProgram" alignment="CENTER" layoutX="603.0" layoutY="239.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Program" textFill="WHITE" />
-      <TextField fx:id="txtDuration" editable="false" layoutX="674.0" layoutY="278.0" style="-fx-background-radius: 10;" />
-      <Label fx:id="lblDuration" alignment="CENTER" layoutX="603.0" layoutY="278.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Duration" textFill="WHITE" />
-      <TextField fx:id="txtFee" editable="false" layoutX="674.0" layoutY="320.0" style="-fx-background-radius: 10;" />
-      <Label fx:id="lblFee" alignment="CENTER" layoutX="603.0" layoutY="320.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Fee" textFill="WHITE" />
       <JFXComboBox fx:id="cmbPid" editable="true" layoutX="603.0" layoutY="151.0" onAction="#cmbPidOnAction" prefHeight="26.0" prefWidth="101.0" promptText="Select" visibleRowCount="5" />
-      <Line endX="354.0" layoutX="330.0" layoutY="346.0" rotate="90.0" startX="-100.0" />
+      <Line endX="354.0" layoutX="408.0" layoutY="404.0" rotate="90.0" startX="-257.0" startY="2.0" />
    </children>
 </AnchorPane>

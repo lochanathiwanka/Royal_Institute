@@ -32,6 +32,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MakeRegistrationFormController extends StageList {
     public JFXTextField txtId;
@@ -46,6 +48,13 @@ public class MakeRegistrationFormController extends StageList {
     public TextField txtDate;
     public TextField txtTime;
     public AnchorPane titlePane;
+    public TextField txtRegFee;
+    public TextField txtCourseFee;
+    public TextField txtTotal;
+    public JFXTextField txtContact;
+    public JFXTextField txtDob;
+    public JFXTextField txtGender;
+    public JFXComboBox cmbGender;
 
     @FXML
     private TableView<ProgramDTO> tblProgram;
@@ -77,11 +86,15 @@ public class MakeRegistrationFormController extends StageList {
         generateRegId();
         generateDateTime();
         addValuesToCmbStudent();
+        addValuesToCmbGender();
         getAllPrograms();
         btnAdd.setDisable(true);
         btnClear.setDisable(true);
         btnRegister.setDisable(true);
         btnRemove.setDisable(true);
+        txtRegFee.setDisable(true);
+        txtCourseFee.setDisable(true);
+        txtTotal.setDisable(true);
         new ZoomIn(titlePane).setSpeed(0.4).play();
     }
 
@@ -141,6 +154,15 @@ public class MakeRegistrationFormController extends StageList {
         }
     }
 
+    private void addValuesToCmbGender() {
+        try {
+            cmbGender.getItems().clear();
+            cmbGender.getItems().add("Male");
+            cmbGender.getItems().add("FeMale");
+        } catch (Exception e) {
+        }
+    }
+
     private void getAllPrograms() {
         try {
             List<ProgramDTO> list = programBO.getAll();
@@ -165,7 +187,31 @@ public class MakeRegistrationFormController extends StageList {
     }
 
     public void btnRemoveOnAction(ActionEvent actionEvent) {
+        double removedCourseFee = 0;
+        for (int i = 0; i < tblProgram.getItems().size(); i++) {
+            if (tblProgram.getItems().get(i).getPid().equals(tblCart.getSelectionModel().getSelectedItem().getPid())) {
+                removedCourseFee = tblProgram.getItems().get(i).getFee();
+            }
+        }
+
+        double oldCourseFee = Double.parseDouble(txtCourseFee.getText());
+        double newCourseFee = oldCourseFee - removedCourseFee;
+        txtCourseFee.setText(newCourseFee+"0");
+
+        txtTotal.setText(Double.parseDouble(txtRegFee.getText())+newCourseFee+"0");
+
         tblCart.getItems().remove(tblCart.getSelectionModel().getSelectedIndex());
+        if (tblCart.getItems().isEmpty()) {
+            btnRemove.setDisable(true);
+            btnRegister.setDisable(true);
+            btnClear.setDisable(true);
+            txtRegFee.setDisable(true);
+            txtRegFee.clear();
+            txtCourseFee.setDisable(true);
+            txtCourseFee.clear();
+            txtTotal.setDisable(true);
+            txtTotal.clear();
+        }
     }
 
     public void btnClearOnAction(ActionEvent actionEvent) {
@@ -173,39 +219,74 @@ public class MakeRegistrationFormController extends StageList {
         btnRemove.setDisable(true);
         btnRegister.setDisable(true);
         btnClear.setDisable(true);
+        txtRegFee.setDisable(true);
+        txtRegFee.clear();
+        txtCourseFee.setDisable(true);
+        txtCourseFee.clear();
+        txtTotal.setDisable(true);
+        txtTotal.clear();
     }
 
     public void btnRegisterOnAction(ActionEvent actionEvent) {
-        try {
-            StudentDTO student = new StudentDTO(txtId.getText(), txtName.getText(), txtAddress.getText());
+        int nameLength = txtName.getText().length();
+        int addressLength = txtAddress.getText().length();
+        int contactLength = txtContact.getText().length();
+        int dobLength = txtDob.getText().length();
+        int genderLength = txtGender.getText().length();
 
-            List<RegistrationDetailDTO> registrationDetailList = new ArrayList<>();
-            for (int i = 0; i < tblCart.getItems().size(); i++) {
-                registrationDetailList.add(new RegistrationDetailDTO(txtRegId.getText(), tblCart.getItems().get(i).getPid()));
+        if (nameLength > 0 && addressLength > 0 && contactLength > 0 && dobLength > 0 && genderLength > 0) {
+            try {
+                StudentDTO student = new StudentDTO(txtId.getText(), txtName.getText(), txtAddress.getText(), txtContact.getText(), txtDob.getText(), txtGender.getText());
+
+                List<RegistrationDetailDTO> registrationDetailList = new ArrayList<>();
+                for (int i = 0; i < tblCart.getItems().size(); i++) {
+                    registrationDetailList.add(new RegistrationDetailDTO(txtRegId.getText(), tblCart.getItems().get(i).getPid()));
+                }
+
+                RegistrationDTO registration = new RegistrationDTO(txtRegId.getText(), txtId.getText(), txtDate.getText(),
+                        Double.parseDouble(txtRegFee.getText()), registrationDetailList);
+
+                registrationBO.makeRegistration(student, registration);
+                new Alert(Alert.AlertType.CONFIRMATION, "Registration Success!", ButtonType.OK).show();
+                generateRegId();
+                generateSid();
+                txtName.clear();
+                txtAddress.clear();
+                txtContact.clear();
+                txtDob.clear();
+                txtGender.clear();
+                cmbGender.setDisable(false);
+                cmbId.getSelectionModel().clearSelection();
+                cmbGender.getSelectionModel().clearSelection();
+                addValuesToCmbStudent();
+                getAllPrograms();
+                btnAdd.setDisable(true);
+                tblCart.getItems().clear();
+                btnRemove.setDisable(true);
+                btnClear.setDisable(true);
+                btnRegister.setDisable(true);
+                txtRegFee.setDisable(true);
+                txtRegFee.clear();
+                txtCourseFee.setDisable(true);
+                txtCourseFee.clear();
+                txtTotal.setDisable(true);
+                txtTotal.clear();
+                txtName.requestFocus();
+            } catch (Exception e) {
+                TrayNotification notification = new TrayNotification();
+                notification.setNotificationType(NotificationType.ERROR);
+                notification.setTitle("Registration");
+                notification.setMessage("Failed to register..try again!");
+                notification.setAnimationType(AnimationType.POPUP);
+                notification.showAndDismiss(Duration.millis(2000));
             }
-
-            RegistrationDTO registration = new RegistrationDTO(txtRegId.getText(), txtId.getText(), txtDate.getText(), registrationDetailList);
-
-            registrationBO.makeRegistration(student, registration);
-            new Alert(Alert.AlertType.CONFIRMATION, "Registration Success!", ButtonType.OK).show();
-            generateRegId();
-            generateSid();
-            txtName.clear();
-            txtAddress.clear();
-            addValuesToCmbStudent();
-            getAllPrograms();
-            btnAdd.setDisable(true);
-            tblCart.getItems().clear();
-            btnRemove.setDisable(true);
-            btnClear.setDisable(true);
-            btnRegister.setDisable(true);
-        } catch (Exception e) {
+        } else {
             TrayNotification notification = new TrayNotification();
-            notification.setNotificationType(NotificationType.ERROR);
-            notification.setTitle("Registration");
-            notification.setMessage("Failed to register..try again!");
             notification.setAnimationType(AnimationType.POPUP);
-            notification.showAndDismiss(Duration.millis(2000));
+            notification.setNotificationType(NotificationType.ERROR);
+            notification.setTitle("Error");
+            notification.setMessage("All Student Fields should be filled!");
+            notification.showAndDismiss(Duration.millis(1000));
         }
     }
 
@@ -234,8 +315,27 @@ public class MakeRegistrationFormController extends StageList {
         int count = isExist(tblProgram.getSelectionModel().getSelectedItem().getPid());
         if (count == -1) {
             tblCart.getItems().add(new CustomeDTO(tblProgram.getSelectionModel().getSelectedItem().getPid()));
+            txtRegFee.setText("5000.00");
+            txtRegFee.setDisable(false);
+            txtCourseFee.setDisable(false);
+            txtTotal.setDisable(false);
+            calculateTotal();
         }
         setTblCartCellValue();
+    }
+
+    private void calculateTotal() {
+        try {
+            double oldCourseFee = Double.parseDouble(txtCourseFee.getText());
+            double newCourseFee = oldCourseFee + tblProgram.getSelectionModel().getSelectedItem().getFee();
+            txtCourseFee.setText(newCourseFee+"0");
+
+            double tot = Double.parseDouble(txtRegFee.getText()) + newCourseFee;
+            txtTotal.setText(tot+"0");
+        } catch (NumberFormatException ex) {
+            txtCourseFee.setText(tblProgram.getSelectionModel().getSelectedItem().getFee()+"0");
+            txtTotal.setText(Double.parseDouble(txtRegFee.getText())+tblProgram.getSelectionModel().getSelectedItem().getFee()+"0");
+        }
     }
 
     public void tblCartOnMouseClicked(MouseEvent mouseEvent) {
@@ -254,7 +354,77 @@ public class MakeRegistrationFormController extends StageList {
             txtId.setText(student.getSid());
             txtName.setText(student.getName());
             txtAddress.setText(student.getAddress());
+            txtContact.setText(student.getContact());
+            txtDob.setText(student.getDob());
+            txtGender.setText(student.getGender());
+            cmbGender.setDisable(true);
         } catch (Exception ex) {
+        }
+    }
+
+    public void cmbGenderOnAction(ActionEvent actionEvent) {
+        txtGender.setText(cmbGender.getSelectionModel().getSelectedItem().toString());
+    }
+
+    public boolean checkRegEx(String pattern, String text) {
+        Pattern compile = Pattern.compile(pattern);
+        Matcher matcher = compile.matcher(text);
+        return matcher.matches();
+    }
+
+    public void txtNameOnAction(ActionEvent actionEvent) {
+        if (checkRegEx("^[A-z\\s]{1,}$", txtName.getText())) {
+            txtAddress.requestFocus();
+        } else {
+            txtName.requestFocus();
+            TrayNotification notification = new TrayNotification();
+            notification.setAnimationType(AnimationType.POPUP);
+            notification.setNotificationType(NotificationType.ERROR);
+            notification.setTitle("Error");
+            notification.setMessage("Can not add symbols or numbers for Name Field!");
+            notification.showAndDismiss(Duration.millis(1000));
+        }
+    }
+
+    public void txtAddressOnAction(ActionEvent actionEvent) {
+        if (checkRegEx("^[A-z\\s\\.\\,0-9]{1,}$", txtAddress.getText())) {
+            txtContact.requestFocus();
+        } else {
+            txtAddress.requestFocus();
+            TrayNotification notification = new TrayNotification();
+            notification.setAnimationType(AnimationType.POPUP);
+            notification.setNotificationType(NotificationType.ERROR);
+            notification.setTitle("Error");
+            notification.setMessage("Check Address Field again!");
+            notification.showAndDismiss(Duration.millis(1000));
+        }
+    }
+
+    public void txtContactOnAction(ActionEvent actionEvent) {
+        if (checkRegEx("^[\\-0-9]{1,}$", txtContact.getText())) {
+            txtDob.requestFocus();
+        } else {
+            txtContact.requestFocus();
+            TrayNotification notification = new TrayNotification();
+            notification.setAnimationType(AnimationType.POPUP);
+            notification.setNotificationType(NotificationType.ERROR);
+            notification.setTitle("Error");
+            notification.setMessage("Can not add symbols for Contact Field!");
+            notification.showAndDismiss(Duration.millis(1000));
+        }
+    }
+
+    public void txtDobOnAction(ActionEvent actionEvent) {
+        if (checkRegEx("^[\\-0-9]{1,}$", txtDob.getText())) {
+            txtGender.requestFocus();
+        } else {
+            txtDob.requestFocus();
+            TrayNotification notification = new TrayNotification();
+            notification.setAnimationType(AnimationType.POPUP);
+            notification.setNotificationType(NotificationType.ERROR);
+            notification.setTitle("Error");
+            notification.setMessage("Can not add symbols for DOB Field!");
+            notification.showAndDismiss(Duration.millis(1000));
         }
     }
 }

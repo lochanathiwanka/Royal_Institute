@@ -17,7 +17,7 @@ public class StudentDAOImpl extends CrudDAOImpl <Student, String> implements Stu
     }
 
     @Override
-    public List<Student> findProgram(String value) throws Exception {
+    public List<Student> findStudent(String value) throws Exception {
         Query query = session.createQuery("FROM Student WHERE sid LIKE ?1 OR name LIKE ?2");
         query.setParameter(1, "%"+value+"%");
         query.setParameter(2, "%"+value+"%");

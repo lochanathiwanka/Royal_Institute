@@ -48,4 +48,21 @@ public class UserBOImpl implements UserBO {
             session.close();
         }
     }
+
+    @Override
+    public void addUser(UserDTO userDTO) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        userDAO.setSession(session);
+        session.getTransaction().begin();
+
+        try {
+            userDAO.add(new User(userDTO.getId(), userDTO.getName(), userDTO.getUserName(), userDTO.getPassword()));
+            session.getTransaction().commit();
+        } catch (Throwable t) {
+            session.getTransaction().rollback();
+            throw t;
+        } finally {
+            session.close();
+        }
+    }
 }

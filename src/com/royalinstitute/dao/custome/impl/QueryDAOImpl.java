@@ -18,8 +18,8 @@ public class QueryDAOImpl implements QueryDAO {
 
     @Override
     public List<Custome> getRegDetailsBySid(String sid) throws Exception {
-        Query query = session.createQuery("SELECT r.regId, r.date, p.program FROM Registration r " +
-                "INNER JOIN r.student s INNER JOIN r.registrationDetailList rd INNER JOIN rd.program p WHERE s.sid = ?1");
+        Query query = session.createQuery("SELECT r.regId, r.date, p.program FROM Student s " +
+                "INNER JOIN s.registrationList r INNER JOIN r.registrationDetailList rd INNER JOIN rd.program p WHERE s.sid = ?1");
         query.setParameter(1, sid);
         List<Object[]> list = query.list();
         List<Custome> all = new ArrayList<>();
@@ -32,8 +32,8 @@ public class QueryDAOImpl implements QueryDAO {
 
     @Override
     public List<Custome> getRegDetailsByPid(String pid) throws Exception {
-        Query query = session.createQuery("SELECT s.sid, r.regId, s.name, s.address FROM Registration r " +
-                "INNER JOIN r.student s INNER JOIN r.registrationDetailList rd INNER JOIN rd.program p WHERE p.pid = ?1");
+        Query query = session.createQuery("SELECT s.sid, r.regId, s.name, s.address FROM Student s " +
+                "INNER JOIN s.registrationList r INNER JOIN r.registrationDetailList rd INNER JOIN rd.program p WHERE p.pid = ?1");
         query.setParameter(1, pid);
         List<Object[]> list = query.list();
         List<Custome> all = new ArrayList<>();

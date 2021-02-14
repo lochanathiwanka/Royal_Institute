@@ -15,7 +15,7 @@
             <Image url="@../asserts/bg/a.jpg" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="254.0" layoutY="65.0" onAction="#btnManageStudentsOnAction" style="-fx-background-color: #414AAC; -fx-background-radius: 20; -fx-border-radius: 20;" text="Manage Students" textFill="WHITE">
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="254.0" layoutY="65.0" onAction="#btnManageStudentsOnAction" style="-fx-background-color: #414AAC; -fx-background-radius: 20; -fx-border-radius: 20;" text="Manage Students" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
          </font>
@@ -23,7 +23,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="251.0" layoutY="122.0" onAction="#btnManageProgramsOnAction" style="-fx-background-color: #414AAC; -fx-background-radius: 20; -fx-border-radius: 20;" text="Manage Programs" textFill="WHITE">
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="251.0" layoutY="122.0" onAction="#btnManageProgramsOnAction" style="-fx-background-color: #414AAC; -fx-background-radius: 20; -fx-border-radius: 20;" text="Manage Programs" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
          </font>
@@ -31,7 +31,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="251.0" layoutY="176.0" onAction="#btnRegistrationOnAction" prefHeight="34.0" prefWidth="184.0" style="-fx-background-color: #414AAC; -fx-background-radius: 20; -fx-border-radius: 20;" text="Registration" textFill="WHITE">
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="251.0" layoutY="176.0" onAction="#btnRegistrationOnAction" prefHeight="34.0" prefWidth="184.0" style="-fx-background-color: #414AAC; -fx-background-radius: 20; -fx-border-radius: 20;" text="Registration" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
          </font>
@@ -39,12 +39,12 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="549.0" layoutY="28.0" onAction="#btnSettingsOnAction" prefHeight="48.0" prefWidth="50.0" styleClass="btnSetting" stylesheets="@../css/style.css" text=" ">
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="549.0" layoutY="28.0" onAction="#btnSettingsOnAction" prefHeight="48.0" prefWidth="50.0" styleClass="btnSetting" stylesheets="@../css/style.css" text=" ">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="33.0" layoutY="28.0" onAction="#btnBackOnAction" prefHeight="41.0" prefWidth="42.0" styleClass="btnBack" stylesheets="@../css/style.css" text=" ">
+      <JFXButton buttonType="RAISED" focusTraversable="false" layoutX="33.0" layoutY="28.0" onAction="#btnBackOnAction" prefHeight="41.0" prefWidth="42.0" styleClass="btnBack" stylesheets="@../css/style.css" text=" ">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

@@ -259,7 +259,7 @@ public class MakeRegistrationFormController extends StageList {
                 cmbId.getSelectionModel().clearSelection();
                 cmbGender.getSelectionModel().clearSelection();
                 addValuesToCmbStudent();
-                getAllPrograms();
+                tblProgram.getSelectionModel().clearSelection();
                 btnAdd.setDisable(true);
                 tblCart.getItems().clear();
                 btnRemove.setDisable(true);

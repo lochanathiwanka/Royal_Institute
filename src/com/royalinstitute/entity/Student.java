@@ -21,12 +21,6 @@ public class Student implements SuperEntity {
     public Student() {
     }
 
-    public Student(String sid, String name, String address) {
-        this.sid = sid;
-        this.name = name;
-        this.address = address;
-    }
-
     public Student(String sid, String name, String address, String contact, String dob, String gender) {
         this.sid = sid;
         this.name = name;

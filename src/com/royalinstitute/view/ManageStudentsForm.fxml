@@ -77,11 +77,11 @@
             <AnchorPane layoutX="265.0" prefHeight="63.0" prefWidth="70.0" style="-fx-background-color: #7c8785; -fx-background-radius: 30;" />
          </children>
       </AnchorPane>
-      <TextField fx:id="txtContact" editable="false" layoutX="509.0" layoutY="348.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtContact" layoutX="509.0" layoutY="348.0" style="-fx-background-radius: 10;" />
       <Label alignment="CENTER" layoutX="438.0" layoutY="348.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Contact" textFill="WHITE" />
-      <TextField fx:id="txtDOB" editable="false" layoutX="509.0" layoutY="387.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtDOB" layoutX="509.0" layoutY="387.0" style="-fx-background-radius: 10;" />
       <Label alignment="CENTER" layoutX="438.0" layoutY="387.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="DOB" textFill="WHITE" />
-      <TextField fx:id="txtGender" editable="false" layoutX="509.0" layoutY="426.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="txtGender" layoutX="509.0" layoutY="426.0" style="-fx-background-radius: 10;" />
       <Label alignment="CENTER" layoutX="438.0" layoutY="426.0" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #00735C; -fx-background-radius: 10;" text="Gender" textFill="WHITE" />
    </children>
 </AnchorPane>

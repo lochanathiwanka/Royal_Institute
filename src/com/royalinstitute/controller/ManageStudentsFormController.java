@@ -53,6 +53,8 @@ public class ManageStudentsFormController extends StageList {
 
     public void initialize() {
         getAllStudent();
+        btnUpdate.setDisable(true);
+        btnDelete.setDisable(true);
         new ZoomIn(titlePane).setSpeed(0.4).play();
     }
 
@@ -93,14 +95,20 @@ public class ManageStudentsFormController extends StageList {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
         try {
-            studentBO.update(new StudentDTO(txtID.getText(), txtName.getText(), txtAddress.getText()));
-            new Alert(Alert.AlertType.INFORMATION, "Student updated!", ButtonType.OK).show();
+            studentBO.update(new StudentDTO(txtID.getText(), txtName.getText(), txtAddress.getText(), txtContact.getText(), txtDOB.getText(), txtGender.getText()));
+            TrayNotification notification = new TrayNotification();
+            notification.setAnimationType(AnimationType.POPUP);
+            notification.setTitle("Student Update");
+            notification.setMessage("Successfully Updated!!");
+            notification.setNotificationType(NotificationType.SUCCESS);
+            notification.showAndDismiss(Duration.millis(2000));
+            getAllStudent();
             refreshFields();
         } catch (Exception e) {
             TrayNotification notification = new TrayNotification();
             notification.setNotificationType(NotificationType.ERROR);
             notification.setTitle("Student");
-            notification.setMessage("Update error..try again!");
+            notification.setMessage("Update error..No Student found!");
             notification.setAnimationType(AnimationType.POPUP);
             notification.showAndDismiss(Duration.millis(2000));
         }
@@ -109,20 +117,26 @@ public class ManageStudentsFormController extends StageList {
     public void btnDeleteOnAction(ActionEvent actionEvent) {
         try {
             studentBO.delete(txtID.getText());
-            new Alert(Alert.AlertType.INFORMATION, "Student deleted!", ButtonType.OK).show();
+            TrayNotification notification = new TrayNotification();
+            notification.setAnimationType(AnimationType.POPUP);
+            notification.setTitle("Student Delete");
+            notification.setMessage("Successfully Deleted!!");
+            notification.setNotificationType(NotificationType.SUCCESS);
+            notification.showAndDismiss(Duration.millis(2000));
+            getAllStudent();
             refreshFields();
         } catch (Exception e) {
             TrayNotification notification = new TrayNotification();
             notification.setNotificationType(NotificationType.ERROR);
             notification.setTitle("Student");
-            notification.setMessage("Delete error..try again!");
+            notification.setMessage("Delete error..No Student found!");
             notification.setAnimationType(AnimationType.POPUP);
             notification.showAndDismiss(Duration.millis(2000));
         }
     }
 
     private void refreshFields() {
-        getAllStudent();
+        tblStudents.getSelectionModel().clearSelection();
         txtFind.clear();
         txtID.clear();
         txtName.clear();
@@ -130,6 +144,8 @@ public class ManageStudentsFormController extends StageList {
         txtContact.clear();
         txtDOB.clear();
         txtGender.clear();
+        btnUpdate.setDisable(true);
+        btnDelete.setDisable(true);
     }
 
     public void btnRefreshOnAction(ActionEvent actionEvent) {
@@ -143,12 +159,16 @@ public class ManageStudentsFormController extends StageList {
 
     public void tblStudentsOnMouseClicked(MouseEvent mouseEvent) {
         try {
-            txtID.setText(tblStudents.getSelectionModel().getSelectedItem().getSid());
-            txtName.setText(tblStudents.getSelectionModel().getSelectedItem().getName());
-            txtAddress.setText(tblStudents.getSelectionModel().getSelectedItem().getAddress());
-            txtContact.setText(tblStudents.getSelectionModel().getSelectedItem().getContact());
-            txtDOB.setText(tblStudents.getSelectionModel().getSelectedItem().getDob());
-            txtGender.setText(tblStudents.getSelectionModel().getSelectedItem().getGender());
+            if (!tblStudents.getItems().isEmpty()) {
+                txtID.setText(tblStudents.getSelectionModel().getSelectedItem().getSid());
+                txtName.setText(tblStudents.getSelectionModel().getSelectedItem().getName());
+                txtAddress.setText(tblStudents.getSelectionModel().getSelectedItem().getAddress());
+                txtContact.setText(tblStudents.getSelectionModel().getSelectedItem().getContact());
+                txtDOB.setText(tblStudents.getSelectionModel().getSelectedItem().getDob());
+                txtGender.setText(tblStudents.getSelectionModel().getSelectedItem().getGender());
+                btnUpdate.setDisable(false);
+                btnDelete.setDisable(false);
+            }
         } catch (NullPointerException ex) {}
     }
 }

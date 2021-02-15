@@ -127,15 +127,15 @@ public class ManageProgramsFormController extends StageList {
             txtFee.clear();
             TrayNotification notification = new TrayNotification();
             notification.setAnimationType(AnimationType.POPUP);
-            notification.setTitle("Program Adding");
-            notification.setMessage("Successfully Updated!!");
+            notification.setTitle("Program Update");
+            notification.setMessage("Successfully Update!!");
             notification.setNotificationType(NotificationType.SUCCESS);
             notification.showAndDismiss(Duration.millis(2000));
         } catch (Exception e) {
 //            e.printStackTrace();
             TrayNotification notification = new TrayNotification();
             notification.setAnimationType(AnimationType.POPUP);
-            notification.setTitle("Program Adding");;
+            notification.setTitle("Program Update");;
             notification.setMessage("Error!");
             notification.setNotificationType(NotificationType.ERROR);
             notification.showAndDismiss(Duration.millis(2000));
@@ -182,7 +182,13 @@ public class ManageProgramsFormController extends StageList {
             txtDuration.clear();
             txtFee.clear();
             txtProgram.requestFocus();
-            new Alert(Alert.AlertType.CONFIRMATION, "Program added!", ButtonType.OK).show();
+
+            TrayNotification notification = new TrayNotification();
+            notification.setAnimationType(AnimationType.POPUP);
+            notification.setTitle("Program Adding");
+            notification.setMessage("Successfully Added!!");
+            notification.setNotificationType(NotificationType.SUCCESS);
+            notification.showAndDismiss(Duration.millis(2000));
         } catch (Exception e) {
 //            e.printStackTrace();
             TrayNotification notification = new TrayNotification();
@@ -291,7 +297,7 @@ public class ManageProgramsFormController extends StageList {
 
     public void btnClearSelectionOnAction(ActionEvent actionEvent) {
         generateId();
-        getAllPrograms();
+        tblProgram.getSelectionModel().clearSelection();
         txtProgram.clear();
         txtDuration.clear();
         txtFee.clear();
